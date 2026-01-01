@@ -1,7 +1,7 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
 <link href='style.css' rel='stylesheet' type='text/css'>
-<title>8values Results</title>
+<title>PoliticAxes Results</title>
 <link rel="icon" type="x-icon" href="icon.png">
 <link rel="shortcut icon" type="x-icon" href="icon.png">
 <meta charset="utf-8">
@@ -74,20 +74,24 @@
         container.innerHTML += html;
     });
 
-    // 2. Comprehensive 17-Axis Matching Logic
+    // 2. Comprehensive 17-Axis Matching Logic (Improved)
     let ideology = "";
     let ideodist = Infinity;
 
     for (var i = 0; i < ideologies.length; i++) {
         let dist = 0;
         axes.forEach(axis => {
-            // Euclidean Distance formula
+            // Calculate how far the user is from this ideology
             dist += Math.pow(Math.abs(ideologies[i].stats[axis.id] - userStats[axis.id]), 2);
         });
 
-        if (dist < ideodist) {
+        // TIE-BREAKER: We add a "penalty" to Syncretism. 
+        // This makes the code prefer a specific ideology even if it's slightly "further" away.
+        let adjustedDist = (ideologies[i].name === "Syncretism") ? dist + 1000 : dist;
+
+        if (adjustedDist < ideodist) {
             ideology = ideologies[i].name;
-            ideodist = dist;
+            ideodist = adjustedDist;
         }
     }
     document.getElementById("ideology-label").innerHTML = ideology;
