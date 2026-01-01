@@ -1,5 +1,9 @@
 ideologies = [
     {
+    "name": "Syncretism",
+    "stats": { "econ": 50, "dipl": 50, "govt": 50, "scty": 50, "coll": 50, "env": 50, "dem": 50, "fed": 50, "rel": 50, "ideal": 50, "util": 50, "sec": 50, "bord": 50, "mil": 50, "nih": 50, "space": 50, "meme": 50 }
+    },
+    {
         "name": "Anarcho-Communism",
         "stats": { "econ": 100, "dipl": 80, "govt": 100, "scty": 90, "coll": 100, "env": 90, "dem": 100, "fed": 100, "rel": 80, "ideal": 90, "util": 50, "sec": 90, "bord": 100, "mil": 80, "nih": 50, "space": 70, "meme": 50 }
     },
@@ -204,10 +208,6 @@ ideologies = [
         "stats": { "econ": 90, "dipl": 80, "govt": 90, "scty": 80, "coll": 100, "env": 80, "dem": 100, "fed": 100, "rel": 80, "ideal": 80, "util": 40, "sec": 70, "bord": 90, "mil": 90, "nih": 30, "space": 40, "meme": 20 }
     },
     {
-        "name": "Syncretism",
-        "stats": { "econ": 50, "dipl": 50, "govt": 50, "scty": 50, "coll": 50, "env": 50, "dem": 50, "fed": 50, "rel": 50, "ideal": 50, "util": 50, "sec": 50, "bord": 50, "mil": 50, "nih": 50, "space": 50, "meme": 50 }
-    },
-    {
         "name": "Social Authoritarianism",
         "stats": { "econ": 70, "dipl": 30, "govt": 20, "scty": 40, "coll": 80, "env": 40, "dem": 30, "fed": 20, "rel": 40, "ideal": 50, "util": 80, "sec": 50, "bord": 30, "mil": 40, "nih": 30, "space": 50, "meme": 20 }
     },
@@ -268,3 +268,4 @@ ideologies = [
         "stats": { "econ": 90, "dipl": 90, "govt": 90, "scty": 100, "coll": 80, "env": 100, "dem": 100, "fed": 100, "rel": 90, "ideal": 100, "util": 50, "sec": 80, "bord": 90, "mil": 100, "nih": 20, "space": 60, "meme": 40 }
     }  
 ];
+
