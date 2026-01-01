@@ -1,632 +1,149 @@
 questions = [
-    {
-        "question": "Oppression by corporations is more of a concern than oppression by governments.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": -5,
-            "scty": 0
-        }
-    },
-    {
-        "question": "It is necessary for the government to intervene in the economy to protect consumers.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "The freer the markets, the freer the people.",
-        "effect": {
-            "econ": -10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "It is better to maintain a balanced budget than to ensure welfare for all citizens.",
-        "effect": {
-            "econ": -10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Publicly-funded research is more beneficial to the people than leaving it to the market.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Tariffs on international trade are important to encourage local production.",
-        "effect": {
-            "econ": 5,
-            "dipl": 0,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "From each according to his ability, to each according to his needs.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "It would be best if social programs were abolished in favor of private charity.",
-        "effect": {
-            "econ": -10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Taxes should be increased on the rich to provide for the poor.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Inheritance is a legitimate form of wealth.",
-        "effect": {
-            "econ": -10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": -5
-        }
-    },
-    {
-        "question": "Basic utilities like roads and electricity should be publicly owned.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Government intervention is a threat to the economy.",
-        "effect": {
-            "econ": -10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Those with a greater ability to pay should receive better healthcare.",
-        "effect": {
-            "econ": -10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Quality education is a right of all people.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 5
-        }
-    },
-    {
-        "question": "The means of production should belong to the workers who use them.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "The United Nations should be abolished.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": -5,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Military action by our nation is often necessary to protect it.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "I support regional unions, such as the European Union.",
-        "effect": {
-            "econ": -5,
-            "dipl": 10,
-            "govt": 10,
-            "scty": 5
-        }
-    },
-    {
-        "question": "It is important to maintain our national sovereignty.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": -5,
-            "scty": 0
-        }
-    },
-    {
-        "question": "A united world government would be beneficial to mankind.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "It is more important to retain peaceful relations than to further our strength.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Wars do not need to be justified to other countries.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Military spending is a waste of money.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "International aid is a waste of money.",
-        "effect": {
-            "econ": -5,
-            "dipl": -10,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "My nation is great.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Research should be conducted on an international scale.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Governments should be accountable to the international community.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 5,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Even when protesting an authoritarian government, violence is not acceptable.",
-        "effect": {
-            "econ": 0,
-            "dipl": 5,
-            "govt": -5,
-            "scty": 0
-        }
-    },
-    {
-        "question": "My religious values should be spread as much as possible.",
-        "effect": {
-            "econ": 0,
-            "dipl": -5,
-            "govt": -10,
-            "scty": -10
-        }
-    },
-    {
-        "question": "Our nation's values should be spread as much as possible.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": -5,
-            "scty": 0
-        }
-    },
-    {
-        "question": "It is very important to maintain law and order.",
-        "effect": {
-            "econ": 0,
-            "dipl": -5,
-            "govt": -10,
-            "scty": -5
-        }
-    },
-    {
-        "question": "The general populace makes poor decisions.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Physician-assisted suicide should be legal.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Government surveillance is necessary in the modern world.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "The very existence of the state is a threat to our liberty.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Regardless of political opinions, it is important to side with your country.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": -10,
-            "scty": -5
-        }
-    },
-    {
-        "question": "All authority should be questioned.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 10,
-            "scty": 5
-        }
-    },
-    {
-        "question": "A hierarchical state is best.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "It is important that the government follows the majority opinion, even if it is wrong.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "The stronger the leadership, the better.",
-        "effect": {
-            "econ": 0,
-            "dipl": -10,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Democracy is more than a decision-making process.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Environmental regulations are essential.",
-        "effect": {
-            "econ": 5,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "A better world will come from automation, science, and technology.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Children should be educated in religious or traditional values.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -5,
-            "scty": -10
-        }
-    },
-    {
-        "question": "Traditions are of no value on their own.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Religion should play a role in government.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": -10
-        }
-    },
-    {
-        "question": "Churches should be taxed the same way other institutions are taxed.",
-        "effect": {
-            "econ": 5,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Climate change is currently one of the greatest threats to our way of life.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "It is important that we work as a united world to combat climate change.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Society was better many years ago than it is now.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": -10
-        }
-    },
-    {
-        "question": "It is important that we maintain the traditions of our past.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": -10
-        }
-    },
-    {
-        "question": "It is important that we think in the long term, beyond our lifespans.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Reason is more important than maintaining our culture.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Drug use should be legalized or decriminalized.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 10,
-            "scty": 2
-        }
-    },
-    {
-        "question": "Same-sex marriage should be legal.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 10,
-            "scty": 10
-        }
-    },
-    {
-        "question": "No cultures are superior to others.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 5,
-            "scty": 10
-        }
-    },
-    {
-        "question": "Sex outside marriage is immoral.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -5,
-            "scty": -10
-        }
-    },
-    {
-        "question": "If we accept migrants at all, it is important that they assimilate into our culture.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -5,
-            "scty": -10
-        }
-    },
-    {
-        "question": "Abortion should be prohibited in most or all cases.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": -10
-        }
-    },
-    {
-        "question": "Gun ownership should be prohibited for those without a valid reason.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "I support single-payer, universal healthcare.",
-        "effect": {
-            "econ": 10,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Prostitution should be illegal.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": -10,
-            "scty": -10
-        }
-    },
-    {
-        "question": "Maintaining family values is essential.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": -10
-        }
-    },
-    {
-        "question": "To chase progress at all costs is dangerous.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": -10
-        }
-    },
-    {
-        "question": "Genetic modification is a force for good, even on humans.",
-        "effect": {
-            "econ": 0,
-            "dipl": 0,
-            "govt": 0,
-            "scty": 10
-        }
-    },
-    {
-        "question": "We should open our borders to immigration.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 10,
-            "scty": 0
-        }
-    },
-    {
-        "question": "Governments should be as concerned about foreigners as they are about their own citizens.",
-        "effect": {
-            "econ": 0,
-            "dipl": 10,
-            "govt": 0,
-            "scty": 0
-        }
-    },
-    {
-        "question": "All people - regardless of factors like culture or sexuality - should be treated equally.",
-        "effect": {
-            "econ": 10,
-            "dipl": 10,
-            "govt": 10,
-            "scty": 10
-        }
-    },
-    {
-        "question": "It is important that we further my group's goals above all others.",
-        "effect": {
-            "econ": -10,
-            "dipl": -10,
-            "govt": -10,
-            "scty": -10
-        }
-    }
+  
+    { "question": "The government should have the right to monitor all digital communications to prevent crime.", "effect": { "govt": -10 } },
+    { "question": "State stability is more important than the right of individuals to express extreme opinions.", "effect": { "govt": -10 } },
+    { "question": "Laws should protect people from themselves, such as banning harmful drugs.", "effect": { "govt": -10 } },
+    { "question": "A citizen always has a moral right to disobey a government they find oppressive.", "effect": { "govt": 10 } },
+    { "question": "Public safety is a fair trade for the presence of mass surveillance in urban areas.", "effect": { "govt": -10 } },
+    { "question": "The state should never be allowed to keep 'classified' secrets from its own citizens.", "effect": { "govt": 10 } },
+    { "question": "The government has the right to mandate civil or military service for the greater good.", "effect": { "govt": -10 } },
+
+    { "question": "Policy decisions should be made by unelected experts rather than by popular vote.", "effect": { "dem": -10 } },
+    { "question": "A strong, decisive leader is more effective than one driven by consensus and debate.", "effect": { "dem": -10 } },
+    { "question": "The right to vote should be earned through service or a demonstration of competence.", "effect": { "dem": -10 } },
+    { "question": "Every major national law should be subject to a direct referendum by the people.", "effect": { "dem": 10 } },
+    { "question": "Political parties are often a source of unnecessary conflict and should be replaced by a unified movement.", "effect": { "dem": -10 } },
+    { "question": "The judiciary must have the power to block any executive action that violates established rights.", "effect": { "dem": 10 } },
+    { "question": "Regular, fair elections are the only legitimate way to transfer power in a state.", "effect": { "dem": 10 } },
+
+    { "question": "A single set of laws should apply to every person in the country to ensure total equality.", "effect": { "fed": -10 } },
+    { "question": "Local communities should be allowed to set their own rules, even if they conflict with national law.", "effect": { "fed": 10 } },
+    { "question": "Any region or group of people should have the legal right to peacefully secede.", "effect": { "fed": 10 } },
+    { "question": "The central government should manage all national resources to prevent regional wealth gaps.", "effect": { "fed": -10 } },
+    { "question": "The most effective government is the one that is closest to the people at the local level.", "effect": { "fed": 10 } },
+    { "question": "A centralized education system is necessary to forge a unified national identity.", "effect": { "fed": -10 } },
+    { "question": "Regions should be 'laboratories of democracy,' free to try wildly different policy approaches.", "effect": { "fed": 10 } },
+
+    { "question": "International treaties should have authority over the internal laws of a nation.", "effect": { "dipl": 10 } },
+    { "question": "My nation should prioritize its own interests even if it harms the global community.", "effect": { "dipl": -10 } },
+    { "question": "We have a moral responsibility to intervene in other nations to stop human rights abuses.", "effect": { "dipl": 10 } },
+    { "question": "Economic and political globalization is a positive force that brings humanity closer together.", "effect": { "dipl": 10 } },
+    { "question": "The unique cultural heritage of my nation must be protected from foreign influence at any cost.", "effect": { "dipl": -10 } },
+    { "question": "Ultimately, national governments should be replaced by a single global authority.", "effect": { "dipl": 10 } },
+    { "question": "Providing foreign aid to developing nations is an essential duty of a civilized country.", "effect": { "dipl": 10 } },
+
+    { "question": "Every human being should have the right to live and work in any country they choose.", "effect": { "bord": 10 } },
+    { "question": "A nation without a strictly controlled and physical border is not truly a nation.", "effect": { "bord": -10 } },
+    { "question": "Immigrants should be expected to fully assimilate into the host nation's culture.", "effect": { "bord": -10 } },
+    { "question": "Free trade without tariffs is always better than economic protectionism.", "effect": { "bord": 10 } },
+    { "question": "The influx of different cultures makes a society stronger and more resilient.", "effect": { "bord": 10 } },
+    { "question": "Foreign workers should only be allowed entry if there is a shortage of local labor.", "effect": { "bord": -10 } },
+    { "question": "We should welcome refugees regardless of the cost to our own social systems.", "effect": { "bord": 10 } },
+
+    { "question": "Pre-emptive military action is sometimes necessary to prevent a larger future conflict.", "effect": { "mil": -10 } },
+    { "question": "The military budget should be drastically reduced to fund social programs.", "effect": { "mil": 10 } },
+    { "question": "Violence is often the only effective way to achieve significant political change.", "effect": { "mil": -10 } },
+    { "question": "Nuclear weapons are a necessary evil that have prevented major world wars.", "effect": { "mil": -10 } },
+    { "question": "Military service builds character and should be a standard part of coming of age.", "effect": { "mil": -10 } },
+    { "question": "Non-violent resistance is always more morally and practically superior to armed struggle.", "effect": { "mil": 10 } },
+    { "question": "A nation's strength is best measured by its ability to project power and win wars.", "effect": { "mil": -10 } },
+
+    { "question": "The government should guarantee a universal basic income to ensure no citizen lives in poverty.", "effect": { "econ": 10 } },
+    { "question": "Those with the highest incomes should pay a significantly higher percentage in taxes.", "effect": { "econ": 10 } },
+    { "question": "Unrestricted market competition is the most efficient way to allocate resources.", "effect": { "econ": -10 } },
+    { "question": "Strong labor unions are essential to protect workers from exploitation.", "effect": { "econ": 10 } },
+    { "question": "Public utilities like electricity and water should be run by private companies.", "effect": { "econ": -10 } },
+    { "question": "Large inheritances should be heavily taxed to prevent permanent wealthy dynasties.", "effect": { "econ": 10 } },
+    { "question": "Profit is essentially 'theft' from the worker, as they created the value but did not receive it.", "effect": { "econ": 15 } }, 
+    { "question": "A truly advanced society should eventually abolish the use of money or currency entirely.", "effect": { "econ": 15 } },
+
+    { "question": "The right to own private property is a fundamental human right that should never be violated.", "effect": { "coll": -10 } },
+    { "question": "Individual rights should be curtailed if they interfere with the well-being of the community.", "effect": { "coll": 10 } },
+    { "question": "Workers, rather than stockholders, should own and manage the factories where they work.", "effect": { "coll": 10 } },
+    { "question": "Economic success is primarily a result of individual hard work, not social circumstances.", "effect": { "coll": -10 } },
+    { "question": "Vital industries like healthcare and transport should be 'commons' owned by everyone.", "effect": { "coll": 10 } },
+    { "question": "Individuals should be allowed to sell their labor under any conditions without state interference.", "effect": { "coll": -15 } },
+    { "question": "No individual should truly 'own' land; the Earth belongs to the community as a whole.", "effect": { "coll": 15 } }, 
+    { "question": "Intellectual property (patents/copyrights) is an artificial monopoly that should be abolished.", "effect": { "coll": 10 } },
+
+    { "question": "Economic growth should be sacrificed if necessary to prevent climate change.", "effect": { "env": 10 } },
+    { "question": "Human innovation will eventually solve environmental issues without us needing to consume less.", "effect": { "env": -10 } },
+    { "question": "Companies should be legally required to pay for the environmental 'footprint' they cause.", "effect": { "env": 10 } },
+    { "question": "National prosperity depends on our ability to utilize natural resources like oil and minerals aggressively.", "effect": { "env": -10 } },
+    { "question": "Large areas of the planet should be off-limits to any human industrial activity.", "effect": { "env": 10 } },
+    { "question": "Maintaining a high industrial output is the only way to lift the global population out of poverty.", "effect": { "env": -10 } },
+    { "question": "Our current industrial lifestyle is fundamentally unsustainable and must be radically simplified.", "effect": { "env": 10 } }
+
+    { "question": "Institutions that have survived for centuries contain a collective wisdom that modern reason cannot easily replace.", "effect": { "scty": -10 } },
+    { "question": "The 'traditional family' is a historical construct that often serves to suppress individual autonomy.", "effect": { "scty": 10 } },
+    { "question": "We should be cautious of 'reforms' that tear down social fences before we understand why they were built.", "effect": { "scty": -10 } },
+    { "question": "Abortion is a fundamental right that represents the expansion of individual sovereignty over one's own body.", "effect": { "scty": 10 } },
+    { "question": "A society that loses its connection to its ancestors is a society that has lost its soul.", "effect": { "scty": -10 } },
+    { "question": "The past is a 'foreign country' whose values are largely irrelevant to the challenges of the 21st century.", "effect": { "scty": 10 } },
+    { "question": "Customs and rituals provide the 'social glue' necessary to prevent civilization from sliding into chaos.", "effect": { "scty": -10 } },
+    { "question": "Scientific advancement and social liberation are the primary metrics of a successful civilization.", "effect": { "scty": 10 } },
+    { "question": "Modernity has traded deep, meaningful belonging for shallow, material comfort.", "effect": { "scty": -10 } }
+
+    { "question": "It is better that ten guilty persons escape than that one innocent suffer.", "effect": { "util": -10 } },
+    { "question": "In matters of state, the lives of the few must be sacrificed to ensure the survival of the many.", "effect": { "util": 10 } },
+    { "question": "The moral status of abortion should be decided by the total balance of societal well-being rather than abstract 'rights'.", "effect": { "util": 10 } },
+    { "question": "There are some lines that a government should never cross, even if crossing them would solve a national crisis.", "effect": { "util": -10 } },
+    { "question": "Human beings should always be treated as ends in themselves, never as a means to an end.", "effect": { "util": -10 } },
+    { "question": "Moral 'purity' is a luxury; leaders must be willing to get their hands dirty to achieve the best result for society.", "effect": { "util": 10 } },
+    { "question": "Consistency to a moral code is more important than the immediate consequences of a specific choice.", "effect": { "util": -10 } },
+    { "question": "We have a moral obligation to use gene editing to eliminate diseases, regardless of 'natural' boundaries.", "effect": { "util": 10 } },
+    { "question": "True justice is blind to the outcome; it only cares that the rules were followed.", "effect": { "util": -10 } }
+
+    { "question": "Moral values are not discovered; they are created by societies to manage human behavior.", "effect": { "rel": 10 } },
+    { "question": "There exists a 'Natural Law' that is accessible to human reason and applies to all people at all times.", "effect": { "rel": -10 } },
+    { "question": "What we call 'Truth' is often just the consensus of those currently in power.", "effect": { "rel": 10 } },
+    { "question": "Without an objective standard of right and wrong, 'justice' is nothing more than the will of the stronger party.", "effect": { "rel": -10 } },
+    { "question": "Tolerance of different moral frameworks is the highest virtue of a pluralistic society.", "effect": { "rel": 10 } },
+    { "question": "A law that contradicts fundamental laws of nature or divinity is no law at all.", "effect": { "rel": -10 } },
+    { "question": "Beauty, truth, and goodness are entirely in the eye of the beholder.", "effect": { "rel": 10 } },
+    { "question": "A society must agree on certain absolute 'sacred' truths if it is to avoid internal decay.", "effect": { "rel": -10 } },
+    { "question": "The search for 'universal truth' is often a veiled attempt to impose one culture's values on another.", "effect": { "rel": 10 } }
+
+    { "question": "Public policy should be based strictly on empirical evidence and secular reason, never on scripture.", "effect": { "sec": 10 } },
+    { "question": "A nation that forgets its religious foundations will eventually lose its moral compass.", "effect": { "sec": -10 } },
+    { "question": "The 'separation of church and state' is essential to protect both the government and the faith.", "effect": { "sec": 10 } },
+    { "question": "The laws of man must always be subservient to the laws of God.", "effect": { "sec": -10 } },
+    { "question": "Religious belief is a private matter and should have no influence on public education.", "effect": { "sec": 10 } },
+    { "question": "Social stability requires a shared religious framework that binds different classes together.", "effect": { "sec": -10 } },
+    { "question": "Supernatural explanations for the world are obstacles to human intellectual maturity.", "effect": { "sec": 10 } },
+    { "question": "A government that does not recognize a higher power will inevitably treat itself as a god.", "effect": { "sec": -10 } },
+    { "question": "Spirituality is valid, but organized religion is primarily a tool for social control.", "effect": { "sec": 10 } }
+
+    { "question": "Human nature is fundamentally good; it is corrupt systems that make people do evil things.", "effect": { "ideal": 10 } },
+    { "question": "The history of humanity is a cycle of conflict that can be managed, but never truly escaped.", "effect": { "ideal": -10 } },
+    { "question": "With enough education and technology, we can eliminate war, poverty, and systemic injustice.", "effect": { "ideal": 10 } },
+    { "question": "Every attempt to create 'Heaven on Earth' has historically resulted in the creation of a Hell.", "effect": { "ideal": -10 } },
+    { "question": "Humanity is currently in its infancy and will eventually evolve into a far more enlightened species.", "effect": { "ideal": 10 } },
+    { "question": "Power naturally tends to centralize and corrupt; tyranny is the 'default' state of human governance.", "effect": { "ideal": -10 } },
+    { "question": "We should strive for the 'impossible' ideal, as it is the only way to achieve meaningful progress.", "effect": { "ideal": 10 } },
+    { "question": "A wise citizen is more concerned with preventing the 'worst' outcome than achieving the 'best' one.", "effect": { "ideal": -10 } },
+    { "question": "The 'Golden Age' of humanity is ahead of us, not behind us.", "effect": { "ideal": 10 } }
+
+    { "question": "Humanity is a cosmic accident, and our existence has no more objective meaning than a rock or a star.", "effect": { "nih": 10 } },
+    { "question": "Without a higher power or a cosmic 'Great Chain of Being,' all morality is just a survival instinct.", "effect": { "nih": 10 } },
+    { "question": "The fact that nothing matters is actually liberating, as it allows us to create our own joy without fear.", "effect": { "nih": 10 } },
+    { "question": "There are things in this world that are truly sacred and must be protected from the 'disenchantment' of science.", "effect": { "nih": -10 } },
+    { "question": "Even in conditions of extreme suffering, life never ceases to have meaning, as we can choose our attitude toward our circumstances.", "effect": { "nih": -10 } },
+    { "question": "Modern social ills are primarily caused by an 'existential vacuum'—a total lack of meaning in daily life.", "effect": { "nih": -10 } },
+    { "question": "Suffering is fundamentally useless; a perfect society is one where all pain and struggle have been technologically eliminated.", "effect": { "nih": 10 } },
+    { "question": "Man should not ask what the meaning of his life is, but rather must realize that it is he who is being questioned by life.", "effect": { "nih": -15 } } // High weight Frankl quote
+
+    { "question": "The Earth is a 'closed system' with finite limits; our priority must be to live within those limits rather than seeking to escape them.", "effect": { "space": -10 } },
+    { "question": "We should stop 'larping' as astronauts and fix our own planet before we dump trillions into the 'cold void' of space.", "effect": { "space": -10 } },
+    { "question": "Space should be a 'Global Commons' where no nation or corporation can claim ownership of moons or asteroids.", "effect": { "space": 10 } },
+    { "question": "The asteroid belt and Mars represent the next 'Wild West'—a place where new, freer societies can finally be born.", "effect": { "space": 10 } },
+    { "question": "High-tech expansion into the stars is just another form of industrial cancer that will eventually consume the universe.", "effect": { "space": -15 } },
+    { "question": "Humanity must become a multi-planetary species immediately to avoid extinction from a single Earth-based catastrophe.", "effect": { "space": 10 } }
+
+    { "question": "Political messages are more effective when they are wrapped in 5 layers of irony and 'deep-fried' meme aesthetics.", "effect": { "meme": 10 } },
+    { "question": "Modern reality is so absurd that 'schizo-posting' and nonsensical memes are the only honest way to describe it.", "effect": { "meme": 15 } },
+    { "question": "If a political idea cannot be explained in a serious, long-form essay, it is likely just 'brain rot' and should be ignored.", "effect": { "meme": -10 } },
+    { "question": "He who controls the memes controls the youth; 'Shitposting' is a more powerful political tool than voting.", "effect": { "meme": 10 } },
+    { "question": "We should return to 'High Culture' where art and politics seek to inspire beauty and order rather than 'ironic' ugliness.", "effect": { "meme": -10 } }
+
 ];
