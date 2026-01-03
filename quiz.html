@@ -1,52 +1,17 @@
-<head>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
-<link href='style.css' rel='stylesheet' type='text/css'>
-<title>PoliticAxes Quiz</title>
-<link rel="icon" type="x-icon" href="icon.png">
-<link rel="shortcut icon" type="x-icon" href="icon.png">
-<meta charset="utf-8">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6511426299019766",
-    enable_page_level_ads: true
-  });
-</script>
-</head>
-<body>
-<h1>PoliticAxes</h1>
-<hr>
-<h2 style="text-align:center;" id="question-number">Loading...</h2>
-<p class="question" id="question-text"></p>
-<button class="button stronglyAgree" onclick="next_question( 1.0)">Strongly Agree</button> <br>
-<button class="button agree" onclick="next_question( 0.5)">Agree</button> <br>
-<button class="button neutral" onclick="next_question( 0.0)">Neutral/Unsure</button> <br>
-<button class="button disagree" onclick="next_question(-0.5)">Disagree</button> <br>
-<button class="button stronglyDisagree" onclick="next_question(-1.0)">Strongly Disagree</button> <br>
-<button class="small_button" onclick="prev_question()" id="back_button">Back</button>
-<button class="small_button_off" id="back_button_off">Back</button><br>
+    // 1. Define the 19 Axes
+    var axes = [
+        "econ", "dipl", "govt", "scty", "coll", "env", "dem", "fed", 
+        "rel", "ideal", "util", "sec", "bord", "mil", "nih", "space", "meme", "plan", "Clt"
+    ];
 
-<!-- Website visit statistics - no personal information is collected! -->
-<script type="text/javascript">
-var sc_project=11325211;
-var sc_invisible=1;
-var sc_security="fd9f0659";
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="web stats"
-href="http://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="//c.statcounter.com/11325211/0/fd9f0659/1/" alt="web
-stats"></a></div></noscript>
+    // 2. Global State
+    var qn = 0; // Current question index
+    var user_scores = {};
+    var max_scores = {};
 
-<!-- JavaScript for the test itself -->
-<script>
-    // 1. The Question List
-var questions = [
+    // 3. The Question List (Your list here...)
+    var questions = [
     // --- GOVT: Authority vs. Liberty ---
     { "question": "The government should have the right to monitor all digital communications to prevent crime.", "effect": { "govt": -10, "sec": -5 } },
     { "question": "State stability is more important than the right of individuals to express extreme opinions.", "effect": { "govt": -10 } },
@@ -245,11 +210,28 @@ var questions = [
     }
 ];
 
+    // 4. Initialize scores and calculate max possible scores
+    axes.forEach(axis => {
+        user_scores[axis] = new Array(questions.length).fill(0);
+        max_scores[axis] = 0;
+    });
+
+    // Calculate maximum possible scores for the percentage math
+    questions.forEach(q => {
+        for (var axis in q.effect) {
+            max_scores[axis] += Math.abs(q.effect[axis]);
+        }
+    });
+
+    // 5. Start the Quiz
+    window.onload = function() {
+        init_question();
+    };
+
     function init_question() {
         document.getElementById("question-text").innerHTML = questions[qn].question;
         document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
         
-        // Fix for the double Back button visible in your screenshot
         if (qn == 0) {
             document.getElementById("back_button").style.display = 'none';
             document.getElementById("back_button_off").style.display = 'inline-block';
@@ -260,11 +242,10 @@ var questions = [
     }
 
     function next_question(mult) {
-        axes.forEach(axis => {
-            if (questions[qn].effect[axis] !== undefined) {
-                user_scores[axis][qn] = mult * questions[qn].effect[axis];
-            }
-        });
+        // Record the score for this specific question
+        for (var axis in questions[qn].effect) {
+            user_scores[axis][qn] = mult * questions[qn].effect[axis];
+        }
         
         qn++;
         if (qn < questions.length) {
@@ -283,15 +264,17 @@ var questions = [
 
     function calc_score(score, max) {
         if (max == 0) return "50.0";
+        // This converts the raw score into a 0-100 percentage
         return (100 * (max + score) / (2 * max)).toFixed(1);
     }
 
     function results() {
+        // Updated Map for all 19 axes
         const urlMap = {
             econ: "e", dipl: "d", govt: "g", scty: "s", coll: "c", 
             env: "v", dem: "m", fed: "f", rel: "t", ideal: "i", 
             util: "x", sec: "y", bord: "b", mil: "p", nih: "n", 
-            space: "z", meme: "r"
+            space: "z", meme: "r", plan: "l", Clt: "q"
         };
 
         let queryParams = axes.map(axis => {
@@ -302,8 +285,3 @@ var questions = [
         location.href = "results.html?" + queryParams.join("&");
     }
 </script>
-</body>
-
-
-
-
