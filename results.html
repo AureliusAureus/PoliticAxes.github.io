@@ -28,26 +28,34 @@
 <button class="button" onclick="location.href='index.html';">Back</button>
 
 <script>
-    const axes = [
-        { id: "econ",  name: "Economic", left: "Equality", right: "Markets", url: "e" },
-        { id: "dipl",  name: "Diplomatic", left: "Peace", right: "Might", url: "d" },
-        { id: "govt",  name: "Civil", left: "Liberty", right: "Authority", url: "g" },
-        { id: "scty",  name: "Societal", left: "Progress", right: "Tradition", url: "s" },
-        { id: "coll",  name: "Ownership", left: "Collectivism", right: "Individualism", url: "c" },
-        { id: "env",   name: "Development", left: "Ecology", right: "Industry", url: "v" },
-        { id: "dem",   name: "Decision", left: "Democracy", right: "Authority", url: "m" },
-        { id: "fed",   name: "Structure", left: "Federal", right: "Unitary", url: "f" },
-        { id: "rel",   name: "Truth", left: "Relativism", right: "Absolutism", url: "t" },
-        { id: "ideal", name: "Vision", left: "Utopian", right: "Dystopian", url: "i" },
-        { id: "util",  name: "Ethics", left: "Utilitarian", right: "Deontic", url: "x" },
-        { id: "sec",   name: "Faith", left: "Secular", right: "Religious", url: "y" },
-        { id: "bord",  name: "Borders", left: "Open", right: "Closed", url: "b" },
-        { id: "mil",   name: "Military", left: "Pacifist", right: "Militarist", url: "p" },
-        { id: "nih",   name: "Existence", left: "Nihilism", right: "Purpose", url: "n" },
-        { id: "space", name: "Expansion", left: "Space", right: "Earth", url: "z" },
-        { id: "meme",  name: "Culture", left: "Brain Rot", right: "Classic", url: "r" }
-    ];
+const axes = [
+    // --- ECONOMIC ---
+    { id: "econ", name: "Economic", left: "Equality", right: "Markets", url: "e", color: "#f44336", tiers: ["Communist", "Socialist", "Mixed", "Capitalist", "Laissez-Faire"] },
+    { id: "coll", name: "Ownership", left: "Collective", right: "Private", url: "c", color: "#3f51b5", tiers: ["Public Only", "Socialized", "Cooperative", "Private-Leaning", "Purely Private"] },
+    { id: "plan", name: "Planning", left: "Planned", right: "Laissez-Faire", url: "l", color: "#795548", tiers: ["Centrally Planned", "Dirigiste", "Regulated", "Decentralized", "Unregulated"] },
+    { id: "env",  name: "Development", left: "Ecology", right: "Industry", url: "v", color: "#4caf50", tiers: ["Deep Ecology", "Green", "Sustainable", "Productivist", "Industrialist"] },
 
+    // --- STATE ---
+    { id: "govt", name: "Civil", left: "Liberty", right: "Authority", url: "g", color: "#ff9800", tiers: ["Anarchist", "Libertarian", "Moderate", "Statist", "Totalitarian"] },
+    { id: "dem",  name: "Decision", left: "Democracy", right: "Autocratic", url: "m", color: "#00bcd4", tiers: ["Direct Democracy", "Representative", "Hybrid", "Authoritarian", "Autocratic"] },
+    { id: "fed",  name: "Structure", left: "Federal", right: "Unitary", url: "f", color: "#607d8b", tiers: ["Confederal", "Federal", "Regionalist", "Centralized", "Unitary"] },
+
+    // --- DIPLOMATIC ---
+    { id: "dipl", name: "Worldview", left: "Nationalist", right: "Globalist", url: "w", color: "#00897b", tiers: ["Ultranationalist", "Nationalist", "Patriotic", "Internationalist", "Globalist"] },
+    { id: "mil",  name: "Military", left: "Pacifist", right: "Militarist", url: "p", color: "#b71c1c", tiers: ["Pacifist", "Anti-War", "Balanced", "Hawkish", "Militarist"] },
+    { id: "bord", name: "Borders", left: "Open", right: "Closed", url: "b", color: "#2196f3", tiers: ["Borderless", "Open", "Regulated", "Restrictive", "Fortress"] },
+    { id: "space",name: "Expansion", left: "Earth", right: "Space", url: "z", color: "#1a237e", tiers: ["Terrestrial", "Earth-First", "Neutral", "Space-Leaning", "Off-World"] },
+
+    // --- PHILOSOPHY & CULTURE ---
+    { id: "scty", name: "Societal", left: "Progress", right: "Tradition", url: "s", color: "#9c27b0", tiers: ["Revolutionary", "Progressive", "Reformist", "Traditionalist", "Reactionary"] },
+    { id: "sec",  name: "Faith", left: "Secular", right: "Religious", url: "y", color: "#fb8c00", tiers: ["Atheist", "Secular", "Agnostic", "Spiritual", "Theocratic"] },
+    { id: "Clt",  name: "Culturalism", left: "Assimilation", right: "Multicultural", url: "a", color: "#d4e157", tiers: ["Monocultural", "Assimilationist", "Pluralist", "Multicultural", "Intercultural"] },
+    { id: "util", name: "Ethics", left: "Utilitarian", right: "Deontic", url: "x", color: "#827717", tiers: ["Purely Utilitarian", "Consequentialist", "Pragmatic", "Rule-Based", "Deontological"] },
+    { id: "rel",  name: "Truth", left: "Relativism", right: "Absolutism", url: "t", color: "#455a64", tiers: ["Nihilistic", "Relativist", "Skeptic", "Objectivist", "Absolutist"] },
+    { id: "ideal",name: "Vision", left: "Utopian", right: "Dystopian", url: "i", color: "#e91e63", tiers: ["Utopian", "Idealist", "Realist", "Cynical", "Dystopian"] },
+    { id: "nih",  name: "Existence", left: "Nihilism", right: "Purpose", url: "n", color: "#212121", tiers: ["Absurdist", "Nihilist", "Existentialist", "Stoic", "Teleological"] },
+    { id: "meme", name: "Culture", left: "Brain Rot", right: "Classic", url: "r", color: "#ffeb3b", tiers: ["Post-Irony", "Brain Rot", "Irony", "Modern", "Classic"] }
+];
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split("&");
@@ -60,20 +68,36 @@
 
     // 1. Generate Bars HTML
     const container = document.getElementById("axis-container");
-    const userStats = {};
+const userStats = {};
 
-    axes.forEach(axis => {
-        const val = getQueryVariable(axis.url);
-        userStats[axis.id] = val;
-        
-        const html = `
-            <h2>${axis.name} Axis: <span class="weight-300" id="${axis.id}-label"></span></h2>
-            <div class="axis">
-                <div class="bar left" id="bar-left-${axis.id}" style="width:${val}%">${val}%</div>
-                <div class="bar right" id="bar-right-${axis.id}" style="width:${100-val}%">${(100-val).toFixed(1)}%</div>
-            </div>`;
-        container.innerHTML += html;
-    });
+axes.forEach(axis => {
+    const val = getQueryVariable(axis.url);
+    userStats[axis.id] = val;
+    
+    // Calculate which tier label to show (0-100 divided into 5 chunks)
+    const tierIndex = Math.min(Math.floor(val / 20), 4);
+    const statusLabel = axis.tiers[tierIndex];
+
+    const html = `
+        <div class="axis-card" style="margin-bottom: 30px;">
+            <h2 style="text-align:left; margin-bottom:5px;">
+                ${axis.name}: <span class="weight-300" style="color:${axis.color}">${statusLabel}</span>
+            </h2>
+            <div class="axis" style="border: 2px solid #222; height: 35px; border-radius: 20px; overflow: hidden; display: flex; background-color: #ddd;">
+                <div class="bar left" style="width:${val}%; background-color:${axis.color}; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                    ${val}%
+                </div>
+                <div class="bar right" style="width:${100-val}%; display: flex; align-items: center; justify-content: center; color: #444; font-weight: bold;">
+                    ${(100-val).toFixed(1)}%
+                </div>
+            </div>
+            <div class="axis-labels" style="display: flex; justify-content: space-between; font-weight: bold; padding-top: 5px;">
+                <span>${axis.left}</span>
+                <span>${axis.right}</span>
+            </div>
+        </div>`;
+    container.innerHTML += html;
+});
 
     // 2. Comprehensive 17-Axis Matching Logic (Improved)
     let ideology = "";
@@ -113,25 +137,23 @@
         ctx.fillText("Closest Match: " + ideology, 20, 110);
 
         axes.forEach((axis, index) => {
-            let y = 160 + (index * 60);
-            let val = userStats[axis.id];
-            
-            // Background bar
-            ctx.fillStyle="#777";
-            ctx.fillRect(150, y, 500, 30);
-            
-            // Value bar
-            ctx.fillStyle="#f44336"; // Left color
-            ctx.fillRect(150, y, 5 * val, 30);
-            
-            ctx.fillStyle="#222";
-            ctx.font="700 15px Montserrat";
-            ctx.textAlign="right";
-            ctx.fillText(axis.left, 140, y + 20);
-            ctx.textAlign="left";
-            ctx.fillText(axis.right, 660, y + 20);
-        });
-
-        document.getElementById("banner").src = c.toDataURL();
-    }
+    let y = 160 + (index * 60);
+    let val = userStats[axis.id];
+    
+    // Background bar
+    ctx.fillStyle="#ddd";
+    ctx.fillRect(150, y, 500, 30);
+    
+    // Value bar using the new specific colors
+    ctx.fillStyle = axis.color; 
+    ctx.fillRect(150, y, 5 * val, 30);
+    
+    // Labels...
+    ctx.fillStyle="#222";
+    ctx.font="700 15px Montserrat";
+    ctx.textAlign="right";
+    ctx.fillText(axis.left, 140, y + 20);
+    ctx.textAlign="left";
+    ctx.fillText(axis.right, 660, y + 20);
+});
 </script>
