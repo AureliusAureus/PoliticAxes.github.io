@@ -1,12 +1,14 @@
 var questions = [
-    { "question": "The government should have the right to monitor all digital communications to prevent crime.", "effect": { "govt": -10 } },
+    // --- GOVT: Authority vs. Liberty ---
+    { "question": "The government should have the right to monitor all digital communications to prevent crime.", "effect": { "govt": -10, "sec": -5 } },
     { "question": "State stability is more important than the right of individuals to express extreme opinions.", "effect": { "govt": -10 } },
-    { "question": "Laws should protect people from themselves, such as banning harmful drugs.", "effect": { "govt": -10 } },
+    { "question": "Laws should protect people from themselves, such as banning harmful drugs.", "effect": { "govt": -10, "scty": -5 } },
     { "question": "A citizen always has a moral right to disobey a government they find oppressive.", "effect": { "govt": 10 } },
     { "question": "Public safety is a fair trade for the presence of mass surveillance in urban areas.", "effect": { "govt": -10 } },
     { "question": "The state should never be allowed to keep 'classified' secrets from its own citizens.", "effect": { "govt": 10 } },
     { "question": "The government has the right to mandate civil or military service for the greater good.", "effect": { "govt": -10 } },
 
+    // --- DEM: Autocracy vs. Democracy ---
     { "question": "Policy decisions should be made by unelected experts rather than by popular vote.", "effect": { "dem": -10 } },
     { "question": "A strong, decisive leader is more effective than one driven by consensus and debate.", "effect": { "dem": -10 } },
     { "question": "The right to vote should be earned through service or a demonstration of competence.", "effect": { "dem": -10 } },
@@ -15,56 +17,71 @@ var questions = [
     { "question": "The judiciary must have the power to block any executive action that violates established rights.", "effect": { "dem": 10 } },
     { "question": "Regular, fair elections are the only legitimate way to transfer power in a state.", "effect": { "dem": 10 } },
 
+    // --- FED: Unitary vs. Federalism ---
     { "question": "A single set of laws should apply to every person in the country to ensure total equality.", "effect": { "fed": -10 } },
     { "question": "Local communities should be allowed to set their own rules, even if they conflict with national law.", "effect": { "fed": 10 } },
     { "question": "Any region or group of people should have the legal right to peacefully secede.", "effect": { "fed": 10 } },
-    { "question": "The central government should manage all national resources to prevent regional wealth gaps.", "effect": { "fed": -10 } },
+    { "question": "The central government should manage all national resources to prevent regional wealth gaps.", "effect": { "fed": -10, "econ": 5 } },
     { "question": "The most effective government is the one that is closest to the people at the local level.", "effect": { "fed": 10 } },
-    { "question": "A centralized education system is necessary to forge a unified national identity.", "effect": { "fed": -10 } },
+    { "question": "A centralized education system is necessary to forge a unified national identity.", "effect": { "fed": -10, "Clt": -5 } },
     { "question": "Regions should be 'laboratories of democracy,' free to try wildly different policy approaches.", "effect": { "fed": 10 } },
 
+    // --- DIPL: Nationalism vs. Globalism ---
     { "question": "International treaties should have authority over the internal laws of a nation.", "effect": { "dipl": 10 } },
     { "question": "My nation should prioritize its own interests even if it harms the global community.", "effect": { "dipl": -10 } },
-    { "question": "We have a moral responsibility to intervene in other nations to stop human rights abuses.", "effect": { "dipl": 10 } },
+    { "question": "We have a moral responsibility to intervene in other nations to stop human rights abuses.", "effect": { "dipl": 10, "mil": 5 } },
     { "question": "Economic and political globalization is a positive force that brings humanity closer together.", "effect": { "dipl": 10 } },
-    { "question": "The unique cultural heritage of my nation must be protected from foreign influence at any cost.", "effect": { "dipl": -10 } },
+    { "question": "The unique cultural heritage of my nation must be protected from foreign influence at any cost.", "effect": { "dipl": -10, "Clt": -5 } },
     { "question": "Ultimately, national governments should be replaced by a single global authority.", "effect": { "dipl": 10 } },
     { "question": "Providing foreign aid to developing nations is an essential duty of a civilized country.", "effect": { "dipl": 10 } },
+    { "question": "Free trade without tariffs is always better than economic protectionism.", "effect": { "dipl": 10, "plan": -5 } }, // Moved from Borders
 
+    // --- BORD: Closed vs. Open Borders ---
     { "question": "Every human being should have the right to live and work in any country they choose.", "effect": { "bord": 10 } },
     { "question": "A nation without a strictly controlled and physical border is not truly a nation.", "effect": { "bord": -10 } },
-    { "question": "Immigrants should be expected to fully assimilate into the host nation's culture.", "effect": { "bord": -10 } },
-    { "question": "Free trade without tariffs is always better than economic protectionism.", "effect": { "bord": 10 } },
-    { "question": "The influx of different cultures makes a society stronger and more resilient.", "effect": { "bord": 10 } },
     { "question": "Foreign workers should only be allowed entry if there is a shortage of local labor.", "effect": { "bord": -10 } },
     { "question": "We should welcome refugees regardless of the cost to our own social systems.", "effect": { "bord": 10 } },
+    { "question": "Visa programs should be liberalized to encourage the free flow of talent.", "effect": { "bord": 10 } }, // New Filler
+    { "question": "Illegal entry into the country should be treated as a criminal offense, not a civil one.", "effect": { "bord": -10 } }, // New Filler
 
+    // --- MIL: Pacifism vs. Militarism ---
     { "question": "Pre-emptive military action is sometimes necessary to prevent a larger future conflict.", "effect": { "mil": -10 } },
     { "question": "The military budget should be drastically reduced to fund social programs.", "effect": { "mil": 10 } },
-    { "question": "Violence is often the only effective way to achieve significant political change.", "effect": { "mil": -10 } },
+    { "question": "Violence is often the only effective way to achieve significant political change.", "effect": { "mil": -10 } }, // Revolutionary Violence
     { "question": "Nuclear weapons are a necessary evil that have prevented major world wars.", "effect": { "mil": -10 } },
     { "question": "Military service builds character and should be a standard part of coming of age.", "effect": { "mil": -10 } },
     { "question": "Non-violent resistance is always more morally and practically superior to armed struggle.", "effect": { "mil": 10 } },
     { "question": "A nation's strength is best measured by its ability to project power and win wars.", "effect": { "mil": -10 } },
 
+    // --- ECON: Equality vs. Markets (Wealth Distribution focus) ---
     { "question": "The government should guarantee a universal basic income to ensure no citizen lives in poverty.", "effect": { "econ": 10 } },
     { "question": "Those with the highest incomes should pay a significantly higher percentage in taxes.", "effect": { "econ": 10 } },
-    { "question": "Unrestricted market competition is the most efficient way to allocate resources.", "effect": { "econ": -10 } },
     { "question": "Strong labor unions are essential to protect workers from exploitation.", "effect": { "econ": 10 } },
-    { "question": "Public utilities like electricity and water should be run by private companies.", "effect": { "econ": -10 } },
     { "question": "Large inheritances should be heavily taxed to prevent permanent wealthy dynasties.", "effect": { "econ": 10 } },
-    { "question": "Profit is essentially 'theft' from the worker, as they created the value but did not receive it.", "effect": { "econ": 15 } }, 
+    { "question": "Profit is essentially 'theft' from the worker, as they created the value but did not receive it.", "effect": { "econ": 15, "coll": 5 } },
     { "question": "A truly advanced society should eventually abolish the use of money or currency entirely.", "effect": { "econ": 15 } },
 
+    // --- PLAN: Laissez-Faire vs. Planned Economy (NEW AXIS) ---
+    { "question": "The 'Invisible Hand' of the market is far better at determining the price of goods than any government committee.", "effect": { "plan": -10 } },
+    { "question": "The state should produce a long-term economic plan to ensure the production of essentials like housing and food.", "effect": { "plan": 10 } },
+    { "question": "Centralized economic planning is inherently inefficient because it cannot account for local supply and demand.", "effect": { "plan": -10 } },
+    { "question": "The community should democratically decide what goods are produced based on human need rather than profit.", "effect": { "plan": 10 } },
+    { "question": "Unrestricted market competition is the most efficient way to allocate resources.", "effect": { "plan": -10 } }, // Moved from Econ
+    { "question": "Strategic industries (energy, rail, internet) must be state-owned and operated.", "effect": { "plan": 10 } },
+    { "question": "Price controls are necessary during times of crisis to prevent price gouging.", "effect": { "plan": 5 } },
+
+    // --- COLL: Private vs. Collective (Ownership focus) ---
     { "question": "The right to own private property is a fundamental human right that should never be violated.", "effect": { "coll": -10 } },
     { "question": "Individual rights should be curtailed if they interfere with the well-being of the community.", "effect": { "coll": 10 } },
     { "question": "Workers, rather than stockholders, should own and manage the factories where they work.", "effect": { "coll": 10 } },
     { "question": "Economic success is primarily a result of individual hard work, not social circumstances.", "effect": { "coll": -10 } },
     { "question": "Vital industries like healthcare and transport should be 'commons' owned by everyone.", "effect": { "coll": 10 } },
     { "question": "Individuals should be allowed to sell their labor under any conditions without state interference.", "effect": { "coll": -15 } },
-    { "question": "No individual should truly 'own' land; the Earth belongs to the community as a whole.", "effect": { "coll": 15 } }, 
+    { "question": "No individual should truly 'own' land; the Earth belongs to the community as a whole.", "effect": { "coll": 15 } },
     { "question": "Intellectual property (patents/copyrights) is an artificial monopoly that should be abolished.", "effect": { "coll": 10 } },
+    { "question": "Public utilities like electricity and water should be run by private companies.", "effect": { "coll": -10 } }, // Moved from Econ
 
+    // --- ENV: Industry vs. Ecology ---
     { "question": "Economic growth should be sacrificed if necessary to prevent climate change.", "effect": { "env": 10 } },
     { "question": "Human innovation will eventually solve environmental issues without us needing to consume less.", "effect": { "env": -10 } },
     { "question": "Companies should be legally required to pay for the environmental 'footprint' they cause.", "effect": { "env": 10 } },
@@ -73,6 +90,7 @@ var questions = [
     { "question": "Maintaining a high industrial output is the only way to lift the global population out of poverty.", "effect": { "env": -10 } },
     { "question": "Our current industrial lifestyle is fundamentally unsustainable and must be radically simplified.", "effect": { "env": 10 } },
 
+    // --- SCTY: Tradition vs. Progress (Time) ---
     { "question": "Institutions that have survived for centuries contain a collective wisdom that modern reason cannot easily replace.", "effect": { "scty": -10 } },
     { "question": "The 'traditional family' is a historical construct that often serves to suppress individual autonomy.", "effect": { "scty": 10 } },
     { "question": "We should be cautious of 'reforms' that tear down social fences before we understand why they were built.", "effect": { "scty": -10 } },
@@ -83,6 +101,16 @@ var questions = [
     { "question": "Scientific advancement and social liberation are the primary metrics of a successful civilization.", "effect": { "scty": 10 } },
     { "question": "Modernity has traded deep, meaningful belonging for shallow, material comfort.", "effect": { "scty": -10 } },
 
+    // --- CLT: Assimilation vs. Multiculturalism (NEW AXIS) ---
+    { "question": "Immigrants should be expected to fully assimilate into the host nation's culture.", "effect": { "Clt": -10 } }, // Moved from Borders
+    { "question": "The influx of different cultures makes a society stronger and more resilient.", "effect": { "Clt": 10 } }, // Moved from Borders
+    { "question": "It is better for a society to be a 'Melting Pot' where many cultures blend together than a single unified culture.", "effect": { "Clt": 10 } },
+    { "question": "Immigrants should be legally required to adopt the language and core values of their host nation.", "effect": { "Clt": -10 } },
+    { "question": "A diverse array of cultural traditions living side-by-side makes a nation more vibrant and creative.", "effect": { "Clt": 10 } },
+    { "question": "Social cohesion is impossible without a single, dominant shared culture that everyone adheres to.", "effect": { "Clt": -10 } },
+    { "question": "State funding should be used to preserve minority languages and cultural festivals.", "effect": { "Clt": 10 } },
+
+    // --- UTIL: Principles vs. Utility ---
     { "question": "It is better that ten guilty persons escape than that one innocent suffer.", "effect": { "util": -10 } },
     { "question": "In matters of state, the lives of the few must be sacrificed to ensure the survival of the many.", "effect": { "util": 10 } },
     { "question": "The moral status of abortion should be decided by the total balance of societal well-being rather than abstract 'rights'.", "effect": { "util": 10 } },
@@ -93,26 +121,30 @@ var questions = [
     { "question": "We have a moral obligation to use gene editing to eliminate diseases, regardless of 'natural' boundaries.", "effect": { "util": 10 } },
     { "question": "True justice is blind to the outcome; it only cares that the rules were followed.", "effect": { "util": -10 } },
 
-    { "question": "Moral values are not discovered; they are created by societies to manage human behavior.", "effect": { "rel": 10 } },
-    { "question": "There exists a 'Natural Law' that is accessible to human reason and applies to all people at all times.", "effect": { "rel": -10 } },
-    { "question": "What we call 'Truth' is often just the consensus of those currently in power.", "effect": { "rel": 10 } },
-    { "question": "Without an objective standard of right and wrong, 'justice' is nothing more than the will of the stronger party.", "effect": { "rel": -10 } },
-    { "question": "Tolerance of different moral frameworks is the highest virtue of a pluralistic society.", "effect": { "rel": 10 } },
+    // --- NIH: Meaning vs. Nihilism (Philosophy) ---
+    // Note: Low Score = Meaning/Objective Truth, High Score = Nihilism/Subjectivity
+    { "question": "Moral values are not discovered; they are created by societies to manage human behavior.", "effect": { "nih": 10 } }, // Moved from Rel
+    { "question": "There exists a 'Natural Law' that is accessible to human reason and applies to all people at all times.", "effect": { "nih": -10 } }, // Moved from Rel
+    { "question": "What we call 'Truth' is often just the consensus of those currently in power.", "effect": { "nih": 10 } }, // Moved from Rel
+    { "question": "Without an objective standard of right and wrong, 'justice' is nothing more than the will of the stronger party.", "effect": { "nih": -10 } }, // Moved from Rel
+    { "question": "Beauty, truth, and goodness are entirely in the eye of the beholder.", "effect": { "nih": 10 } }, // Moved from Rel
+    { "question": "Humanity is a cosmic accident, and our existence has no more objective meaning than a rock or a star.", "effect": { "nih": 10 } },
+    { "question": "Even in conditions of extreme suffering, life never ceases to have meaning.", "effect": { "nih": -10 } },
+    { "question": "Modern social ills are primarily caused by an 'existential vacuum'—a total lack of meaning in daily life.", "effect": { "nih": -10 } },
+
+    // --- REL: Religious Influence vs. Secularism (Renamed Logic from old 'rel' and 'sec') ---
+    // Note: Low Score = Religious, High Score = Secular
+    { "question": "Tolerance of different moral frameworks is the highest virtue of a pluralistic society.", "effect": { "rel": 10, "Clt": 5 } },
     { "question": "A law that contradicts fundamental laws of nature or divinity is no law at all.", "effect": { "rel": -10 } },
-    { "question": "Beauty, truth, and goodness are entirely in the eye of the beholder.", "effect": { "rel": 10 } },
     { "question": "A society must agree on certain absolute 'sacred' truths if it is to avoid internal decay.", "effect": { "rel": -10 } },
-    { "question": "The search for 'universal truth' is often a veiled attempt to impose one culture's values on another.", "effect": { "rel": 10 } },
+    { "question": "Public policy should be based strictly on empirical evidence and secular reason, never on scripture.", "effect": { "rel": 10 } }, // Moved from Sec
+    { "question": "A nation that forgets its religious foundations will eventually lose its moral compass.", "effect": { "rel": -10 } }, // Moved from Sec
+    { "question": "The 'separation of church and state' is essential to protect both the government and the faith.", "effect": { "rel": 10 } }, // Moved from Sec
+    { "question": "The laws of man must always be subservient to the laws of God.", "effect": { "rel": -10 } }, // Moved from Sec
+    { "question": "Religious belief is a private matter and should have no influence on public education.", "effect": { "rel": 10 } }, // Moved from Sec
+    { "question": "Spirituality is valid, but organized religion is primarily a tool for social control.", "effect": { "rel": 10 } }, // Moved from Sec
 
-    { "question": "Public policy should be based strictly on empirical evidence and secular reason, never on scripture.", "effect": { "sec": 10 } },
-    { "question": "A nation that forgets its religious foundations will eventually lose its moral compass.", "effect": { "sec": -10 } },
-    { "question": "The 'separation of church and state' is essential to protect both the government and the faith.", "effect": { "sec": 10 } },
-    { "question": "The laws of man must always be subservient to the laws of God.", "effect": { "sec": -10 } },
-    { "question": "Religious belief is a private matter and should have no influence on public education.", "effect": { "sec": 10 } },
-    { "question": "Social stability requires a shared religious framework that binds different classes together.", "effect": { "sec": -10 } },
-    { "question": "Supernatural explanations for the world are obstacles to human intellectual maturity.", "effect": { "sec": 10 } },
-    { "question": "A government that does not recognize a higher power will inevitably treat itself as a god.", "effect": { "sec": -10 } },
-    { "question": "Spirituality is valid, but organized religion is primarily a tool for social control.", "effect": { "sec": 10 } },
-
+    // --- IDEAL: Realism vs. Idealism ---
     { "question": "Human nature is fundamentally good; it is corrupt systems that make people do evil things.", "effect": { "ideal": 10 } },
     { "question": "The history of humanity is a cycle of conflict that can be managed, but never truly escaped.", "effect": { "ideal": -10 } },
     { "question": "With enough education and technology, we can eliminate war, poverty, and systemic injustice.", "effect": { "ideal": 10 } },
@@ -121,28 +153,25 @@ var questions = [
     { "question": "Power naturally tends to centralize and corrupt; tyranny is the 'default' state of human governance.", "effect": { "ideal": -10 } },
     { "question": "We should strive for the 'impossible' ideal, as it is the only way to achieve meaningful progress.", "effect": { "ideal": 10 } },
     { "question": "A wise citizen is more concerned with preventing the 'worst' outcome than achieving the 'best' one.", "effect": { "ideal": -10 } },
-    { "question": "The 'Golden Age' of humanity is ahead of us, not behind us.", "effect": { "ideal": 10 } },
 
-    { "question": "Humanity is a cosmic accident, and our existence has no more objective meaning than a rock or a star.", "effect": { "nih": 10 } },
-    { "question": "Without a higher power or a cosmic 'Great Chain of Being,' all morality is just a survival instinct.", "effect": { "nih": 10 } },
-    { "question": "The fact that nothing matters is actually liberating, as it allows us to create our own joy without fear.", "effect": { "nih": 10 } },
-    { "question": "There are things in this world that are truly sacred and must be protected from the 'disenchantment' of science.", "effect": { "nih": -10 } },
-    { "question": "Even in conditions of extreme suffering, life never ceases to have meaning, as we can choose our attitude toward our circumstances.", "effect": { "nih": -10 } },
-    { "question": "Modern social ills are primarily caused by an 'existential vacuum'—a total lack of meaning in daily life.", "effect": { "nih": -10 } },
-    { "question": "Suffering is fundamentally useless; a perfect society is one where all pain and struggle have been technologically eliminated.", "effect": { "nih": 10 } },
-    { "question": "Man should not ask what the meaning of his life is, but rather must realize that it is he who is being questioned by life.", "effect": { "nih": -15 } },
-
+    // --- SPACE: Earth vs. Space (Futurism) ---
     { "question": "The Earth is a 'closed system' with finite limits; our priority must be to live within those limits rather than seeking to escape them.", "effect": { "space": -10 } },
     { "question": "We should stop 'larping' as astronauts and fix our own planet before we dump trillions into the 'cold void' of space.", "effect": { "space": -10 } },
     { "question": "Space should be a 'Global Commons' where no nation or corporation can claim ownership of moons or asteroids.", "effect": { "space": 10 } },
     { "question": "The asteroid belt and Mars represent the next 'Wild West'—a place where new, freer societies can finally be born.", "effect": { "space": 10 } },
     { "question": "High-tech expansion into the stars is just another form of industrial cancer that will eventually consume the universe.", "effect": { "space": -15 } },
     { "question": "Humanity must become a multi-planetary species immediately to avoid extinction from a single Earth-based catastrophe.", "effect": { "space": 10 } },
+    { "question": "Terraforming Mars and other planets is a moral imperative to ensure the survival of consciousness.", "effect": { "space": 15 } }, // New
+    { "question": "Resources spent on space agencies would be better spent on poverty alleviation.", "effect": { "space": -10 } }, // New
+    { "question": "The exploration of the cosmos is the ultimate destiny of mankind.", "effect": { "space": 10 } }, // New
 
+    // --- MEME: Sincerity vs. Irony (Meta) ---
     { "question": "Political messages are more effective when they are wrapped in 5 layers of irony and 'deep-fried' meme aesthetics.", "effect": { "meme": 10 } },
     { "question": "Modern reality is so absurd that 'schizo-posting' and nonsensical memes are the only honest way to describe it.", "effect": { "meme": 15 } },
     { "question": "If a political idea cannot be explained in a serious, long-form essay, it is likely just 'brain rot' and should be ignored.", "effect": { "meme": -10 } },
     { "question": "He who controls the memes controls the youth; 'Shitposting' is a more powerful political tool than voting.", "effect": { "meme": 10 } },
-    { "question": "We should return to 'High Culture' where art and politics seek to inspire beauty and order rather than 'ironic' ugliness.", "effect": { "meme": -10 } }
-    ];
+    { "question": "We should return to 'High Culture' where art and politics seek to inspire beauty and order rather than 'ironic' ugliness.", "effect": { "meme": -10 } },
+    { "question": "Political extremism is often just a form of entertainment for the internet age.", "effect": { "meme": 10 } }, // New
+    { "question": "The 'Overton Window' is moving so fast that what was centrist yesterday is extremist today.", "effect": { "meme": 5, "scty": -5 } }, // New
+    { "question": "Reality has become indistinguishable from satire.", "effect": { "meme": 15 } } // New
 ];
