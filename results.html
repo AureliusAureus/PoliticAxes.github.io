@@ -37,24 +37,24 @@ const axes = [
 
     // --- STATE ---
     { id: "govt", name: "Civil", left: "Liberty", right: "Authority", url: "g", color: "#ff9800", tiers: ["Anarchist", "Libertarian", "Moderate", "Statist", "Totalitarian"] },
-    { id: "dem",  name: "Decision", left: "Democracy", right: "Autocratic", url: "m", color: "#00bcd4", tiers: ["Direct Democracy", "Representative", "Hybrid", "Authoritarian", "Autocratic"] },
+    { id: "dem",  name: "Decision", left: "Democracy", right: "Autocratic", url: "m", color: "#00bcd4", tiers: ["Direct Democracy", "Representative", "Meritocracy", "Authoritarian", "Autocratic"] },
     { id: "fed",  name: "Structure", left: "Federal", right: "Unitary", url: "f", color: "#607d8b", tiers: ["Confederal", "Federal", "Regionalist", "Centralized", "Unitary"] },
 
     // --- DIPLOMATIC ---
     { id: "dipl", name: "Worldview", left: "Nationalist", right: "Globalist", url: "d", color: "#00897b", tiers: ["Ultranationalist", "Nationalist", "Patriotic", "Internationalist", "Globalist"] },
     { id: "mil",  name: "Military", left: "Pacifist", right: "Militarist", url: "p", color: "#b71c1c", tiers: ["Pacifist", "Anti-War", "Balanced", "Hawkish", "Militarist"] },
-    { id: "bord", name: "Borders", left: "Open", right: "Closed", url: "b", color: "#2196f3", tiers: ["Borderless", "Open", "Regulated", "Restrictive", "Fortress"] },
+    { id: "bord", name: "Borders", left: "Open", right: "Closed", url: "b", color: "#2196f3", tiers: ["Borderless", "Open", "Regulated", "Restrictive", "Closed Borders Isolationism"] },
     { id: "space",name: "Expansion", left: "Earth", right: "Space", url: "z", color: "#1a237e", tiers: ["Terrestrial", "Earth-First", "Neutral", "Space-Leaning", "Off-World"] },
 
     // --- PHILOSOPHY & CULTURE ---
     { id: "scty", name: "Societal", left: "Progress", right: "Tradition", url: "s", color: "#9c27b0", tiers: ["Revolutionary", "Progressive", "Reformist", "Traditionalist", "Reactionary"] },
-    { id: "sec",  name: "Faith", left: "Secular", right: "Religious", url: "y", color: "#fb8c00", tiers: ["Atheist", "Secular", "Agnostic", "Spiritual", "Theocratic"] },
-    { id: "Clt",  name: "Culturalism", left: "Assimilation", right: "Multicultural", url: "q", color: "#d4e157", tiers: ["Monocultural", "Assimilationist", "Pluralist", "Multicultural", "Intercultural"] },
-    { id: "util", name: "Ethics", left: "Utilitarian", right: "Deontic", url: "x", color: "#827717", tiers: ["Purely Utilitarian", "Consequentialist", "Pragmatic", "Rule-Based", "Deontological"] },
-    { id: "rel",  name: "Truth", left: "Relativism", right: "Absolutism", url: "t", color: "#455a64", tiers: ["Nihilistic", "Relativist", "Skeptic", "Objectivist", "Absolutist"] },
+    { id: "sec",  name: "Faith", left: "Secular", right: "Religious", url: "y", color: "#fb8c00", tiers: ["Atheist", "Secular", "Neutral", "Spiritual", "Theocratic"] },
+    { id: "Clt",  name: "Culturalism", left: "Assimilation", right: "Multicultural", url: "q", color: "#d4e157", tiers: ["Monocultural", "Assimilationist", "Pluralist", "Multicultural", "Cosmopolitan"] },
+    { id: "util", name: "Ethics", left: "Utilitarian", right: "Deontic", url: "x", color: "#827717", tiers: ["Utilitarian", "Consequentialist", "Pragmatic", "Rule-Based", "Deontological"] },
+    { id: "rel",  name: "Truth", left: "Relativism", right: "Absolutism", url: "t", color: "#455a64", tiers: ["Subjectivism", "Relativist", "Pluralism", "Objectivist", "Absolutist"] },
     { id: "ideal",name: "Vision", left: "Utopian", right: "Dystopian", url: "i", color: "#e91e63", tiers: ["Utopian", "Idealist", "Realist", "Cynical", "Dystopian"] },
-    { id: "nih",  name: "Existence", left: "Nihilism", right: "Purpose", url: "n", color: "#212121", tiers: ["Absurdist", "Nihilist", "Existentialist", "Stoic", "Teleological"] },
-    { id: "meme", name: "Culture", left: "Brain Rot", right: "Classic", url: "r", color: "#ffeb3b", tiers: ["Post-Irony", "Brain Rot", "Irony", "Modern", "Classic"] }
+    { id: "nih",  name: "Existence", left: "Nihilism", right: "Purpose", url: "n", color: "#212121", tiers: ["Nihilism", "Absurdism", "Existentialist", "Teleological/Essentialism"] },
+    { id: "meme", name: "Culture", left: "Brain Rot", right: "Classic", url: "r", color: "#ffeb3b", tiers: ["Brain Rot", "Irony", "Mixed", "Modern", "Classic"] }
 ];
 
 function getQueryVariable(variable) {
