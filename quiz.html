@@ -35,14 +35,14 @@
     <script type="text/javascript" src="https://secure.statcounter.com/counter/counter.js" async></script>
     <noscript><div class="statcounter"><a title="web stats" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="//c.statcounter.com/11325211/0/fd9f0659/1/" alt="web stats"></a></div></noscript>
 
-    <script>
-        // 1. Define the 19 Axes
-        var axes = ["econ", "dipl", "govt", "scty", "coll", "env", "dem", "fed", "rel", "ideal", "util", "sec", "bord", "mil", "nih", "space", "meme", "plan", "Clt"];
+   <script>
+    // 1. Define the 19 Axes
+    var axes = ["econ", "dipl", "govt", "scty", "coll", "env", "dem", "fed", "rel", "ideal", "util", "sec", "bord", "mil", "nih", "space", "meme", "plan", "Clt"];
 
-        // 2. Global State
-        var qn = 0; 
-        var user_scores = {};
-        var max_scores = {};
+    // 2. Global State
+    var qn = 0; 
+    var user_scores = {};
+    var max_scores = {};
 
         // 3. Question List
         var questions = [
@@ -208,87 +208,91 @@
         ];
 
         // 4. Initialize Scores
-        function init_scores() {
-            axes.forEach(axis => {
-                user_scores[axis] = new Array(questions.length).fill(0);
-                max_scores[axis] = 0;
-            });
-
-            questions.forEach(q => {
-                for (var axis in q.effect) {
-                    if (max_scores.hasOwnProperty(axis)) {
-                        max_scores[axis] += Math.abs(q.effect[axis]);
-                    }
-                }
-            });
-        }
-
-        // 5. Start Logic
-        document.addEventListener("DOMContentLoaded", function() {
-            init_scores();
-            init_question();
+function init_scores() {
+        axes.forEach(axis => {
+            user_scores[axis] = new Array(questions.length).fill(0);
+            max_scores[axis] = 0;
         });
 
-        function init_question() {
-            var qText = document.getElementById("question-text");
-            var qNum = document.getElementById("question-number");
-            var bBtn = document.getElementById("back_button");
-            var bBtnOff = document.getElementById("back_button_off");
-
-            if (!qText || !qNum) return;
-
-            if (qn < questions.length) {
-                qText.innerHTML = questions[qn].question;
-                qNum.innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
-                
-                if (bBtn && bBtnOff) {
-                    bBtn.style.display = (qn == 0) ? 'none' : 'inline-block';
-                    bBtnOff.style.display = (qn == 0) ? 'inline-block' : 'none';
+        questions.forEach(q => {
+            for (var axis in q.effect) {
+                if (max_scores.hasOwnProperty(axis)) {
+                    max_scores[axis] += Math.abs(q.effect[axis]);
                 }
             }
+        });
+    }
+
+    // 5. FIXED: Corrected ID selection
+    function init_question() {
+        // Change "question" to "question-text" to match your HTML ID
+        var qText = document.getElementById("question-text"); 
+        var qNum = document.getElementById("question-number");
+        var bBtn = document.getElementById("back_button");
+        var bBtnOff = document.getElementById("back_button_off");
+
+        if (!qText || !qNum) {
+            console.error("Could not find question elements in HTML");
+            return;
         }
 
-        function next_question(mult) {
-            for (var axis in questions[qn].effect) {
-                if (user_scores.hasOwnProperty(axis)) {
-                    user_scores[axis][qn] = mult * questions[qn].effect[axis];
-                }
+        if (qn < questions.length) {
+            qText.innerHTML = questions[qn].question;
+            qNum.innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
+            
+            if (bBtn && bBtnOff) {
+                bBtn.style.display = (qn == 0) ? 'none' : 'inline-block';
+                bBtnOff.style.display = (qn == 0) ? 'inline-block' : 'none';
             }
-            qn++;
-            if (qn < questions.length) {
-                init_question();
-            } else {
-                results();
+        }
+    }
+
+    // 6. Execution
+    init_scores();
+    window.onload = init_question; // Ensures the page is fully loaded before trying to display text
+
+    function next_question(mult) {
+        for (var axis in questions[qn].effect) {
+            if (user_scores.hasOwnProperty(axis)) {
+                user_scores[axis][qn] = mult * questions[qn].effect[axis];
             }
         }
-
-        function prev_question() {
-            if (qn > 0) {
-                qn--;
-                init_question();
-            }
+        qn++;
+        if (qn < questions.length) {
+            init_question();
+        } else {
+            results();
         }
+    }
 
-        function calc_score(score, max) {
-            if (max == 0) return "50.0";
-            return (100 * (max + score) / (2 * max)).toFixed(1);
+    function prev_question() {
+        if (qn > 0) {
+            qn--;
+            init_question();
         }
+    }
 
-        function results() {
-            const urlMap = {
-                econ: "e", dipl: "d", govt: "g", scty: "s", coll: "c", 
-                env: "v", dem: "m", fed: "f", rel: "t", ideal: "i", 
-                util: "x", sec: "y", bord: "b", mil: "p", nih: "n", 
-                space: "z", meme: "r", plan: "l", Clt: "q"
-            };
+    function calc_score(score, max) {
+        if (max == 0) return "50.0";
+        return (100 * (max + score) / (2 * max)).toFixed(1);
+    }
 
-            let queryParams = axes.map(axis => {
-                let total_score = user_scores[axis].reduce((a, b) => a + b, 0);
-                return `${urlMap[axis]}=${calc_score(total_score, max_scores[axis])}`;
-            });
+    function results() {
+        const urlMap = {
+            econ: "e", dipl: "d", govt: "g", scty: "s", coll: "c", 
+            env: "v", dem: "m", fed: "f", rel: "t", ideal: "i", 
+            util: "x", sec: "y", bord: "b", mil: "p", nih: "n", 
+            space: "z", meme: "r", plan: "l", Clt: "q"
+        };
 
-            location.href = "results.html?" + queryParams.join("&");
-        }
-    </script>
+        let queryParams = axes.map(axis => {
+            let total_score = user_scores[axis].reduce((a, b) => a + b, 0);
+            return `${urlMap[axis]}=${calc_score(total_score, max_scores[axis])}`;
+        });
+
+        location.href = "results.html?" + queryParams.join("&");
+    }
+</script>
 </body>
+
 
