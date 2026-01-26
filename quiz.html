@@ -35,14 +35,14 @@
     <script type="text/javascript" src="https://secure.statcounter.com/counter/counter.js" async></script>
     <noscript><div class="statcounter"><a title="web stats" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="//c.statcounter.com/11325211/0/fd9f0659/1/" alt="web stats"></a></div></noscript>
 
-   <script>
-    // 1. Define the 19 Axes
-    var axes = ["econ", "dipl", "govt", "scty", "coll", "env", "dem", "fed", "rel", "ideal", "util", "sec", "bord", "mil", "nih", "space", "meme", "plan", "Clt"];
+    <script>
+        // 1. Define the 19 Axes
+        var axes = ["econ", "dipl", "govt", "scty", "coll", "env", "dem", "fed", "rel", "ideal", "util", "sec", "bord", "mil", "nih", "space", "meme", "plan", "Clt"];
 
-    // 2. Global State
-    var qn = 0; 
-    var user_scores = {};
-    var max_scores = {};
+        // 2. Global State
+        var qn = 0; 
+        var user_scores = {};
+        var max_scores = {};
 
         // 3. Question List
         var questions = [
@@ -193,106 +193,89 @@
             { "question": "We are essentially 'meat computers' whose consciousness is just a byproduct of chemical reactions with no higher purpose.", "effect": { "nih": 15 } },
             { "question": "Since we cannot control the ultimate outcome of our lives, the idea of 'building character' through suffering is just a cope for the weak.", "effect": { "nih": 10, "ideal": -5 } },
             { "question": "The only thing a person truly owns is their own integrity; everything else is subject to the whims of a chaotic and indifferent universe.", "effect": { "nih": -15, "util": -5 } }
-            { "question": "The state must mediate between labor and capital to ensure both serve the national interest, rather than allowing class struggle.", "effect": { "econ": 0, "plan": 15, "coll": 10, "govt": -10 } },
-            { "question": "The economy should be organized into national corporations or guilds based on profession to eliminate social friction.", "effect": { "econ": 0, "plan": 10, "coll": 10, "govt": -10 } },
-            { "question": "Environmental protection is impossible without strict border controls to prevent overpopulation from the developing world.", "effect": { "env": 15, "bord": -15, "dipl": -10 } },
-            { "question": "The preservation of our natural land is a duty tied to our specific ethnic or national heritage.", "effect": { "env": 10, "Clt": -15, "scty": -10 } },
-            { "question": "Modern institutions are so decayed that we should intentionally accelerate their collapse to make way for something new.", "effect": { "meme": 15, "ideal": 10, "scty": 15 } },
-            { "question": "Traditional logic is a prison; we should embrace the absurd and the chaotic to truly be free.", "effect": { "meme": 10, "rel": 10, "nih": 10 } },
-            { "question": "An individual's fundamental rights must be protected even if violating them would provide a significant benefit to the majority.", "effect": { "util": -15, "coll": -5 } },
-            { "question": "Ethical progress is measured solely by the reduction of suffering, regardless of which traditional rules are broken to achieve it.", "effect": { "util": 15, "nih": 5 } },
-            { "question": "The individual is the sole creator of their own values and owes nothing to abstract concepts like 'humanity' or 'the state'.", "effect": { "nih": 10, "govt": 15, "coll": -15, "rel": 10 } },
-            { "question": "Since life has no inherent meaning, the only logical pursuit is the satisfaction of one's own desires and ego.", "effect": { "nih": 15, "util": 10, "ideal": -10 } },
-            { "question": "Space exploration should be driven by private enterprise and the pursuit of new resources rather than global government cooperation.", "effect": { "space": 10, "coll": -10, "plan": -10 } },
-            { "question": "The migration to the stars is a spiritual necessity for the survival of human consciousness, regardless of economic cost.", "effect": { "space": 15, "ideal": 15, "util": -5 } },
         ];
 
         // 4. Initialize Scores
-function init_scores() {
-        axes.forEach(axis => {
-            user_scores[axis] = new Array(questions.length).fill(0);
-            max_scores[axis] = 0;
+        function init_scores() {
+            axes.forEach(axis => {
+                user_scores[axis] = new Array(questions.length).fill(0);
+                max_scores[axis] = 0;
+            });
+
+            questions.forEach(q => {
+                for (var axis in q.effect) {
+                    if (max_scores.hasOwnProperty(axis)) {
+                        max_scores[axis] += Math.abs(q.effect[axis]);
+                    }
+                }
+            });
+        }
+
+        // 5. Start Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            init_scores();
+            init_question();
         });
 
-        questions.forEach(q => {
-            for (var axis in q.effect) {
-                if (max_scores.hasOwnProperty(axis)) {
-                    max_scores[axis] += Math.abs(q.effect[axis]);
+        function init_question() {
+            var qText = document.getElementById("question-text");
+            var qNum = document.getElementById("question-number");
+            var bBtn = document.getElementById("back_button");
+            var bBtnOff = document.getElementById("back_button_off");
+
+            if (!qText || !qNum) return;
+
+            if (qn < questions.length) {
+                qText.innerHTML = questions[qn].question;
+                qNum.innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
+                
+                if (bBtn && bBtnOff) {
+                    bBtn.style.display = (qn == 0) ? 'none' : 'inline-block';
+                    bBtnOff.style.display = (qn == 0) ? 'inline-block' : 'none';
                 }
             }
-        });
-    }
-
-    // 5. FIXED: Corrected ID selection
-    function init_question() {
-        // Change "question" to "question-text" to match your HTML ID
-        var qText = document.getElementById("question-text"); 
-        var qNum = document.getElementById("question-number");
-        var bBtn = document.getElementById("back_button");
-        var bBtnOff = document.getElementById("back_button_off");
-
-        if (!qText || !qNum) {
-            console.error("Could not find question elements in HTML");
-            return;
         }
 
-        if (qn < questions.length) {
-            qText.innerHTML = questions[qn].question;
-            qNum.innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
-            
-            if (bBtn && bBtnOff) {
-                bBtn.style.display = (qn == 0) ? 'none' : 'inline-block';
-                bBtnOff.style.display = (qn == 0) ? 'inline-block' : 'none';
+        function next_question(mult) {
+            for (var axis in questions[qn].effect) {
+                if (user_scores.hasOwnProperty(axis)) {
+                    user_scores[axis][qn] = mult * questions[qn].effect[axis];
+                }
+            }
+            qn++;
+            if (qn < questions.length) {
+                init_question();
+            } else {
+                results();
             }
         }
-    }
 
-    // 6. Execution
-    init_scores();
-    window.onload = init_question; // Ensures the page is fully loaded before trying to display text
-
-    function next_question(mult) {
-        for (var axis in questions[qn].effect) {
-            if (user_scores.hasOwnProperty(axis)) {
-                user_scores[axis][qn] = mult * questions[qn].effect[axis];
+        function prev_question() {
+            if (qn > 0) {
+                qn--;
+                init_question();
             }
         }
-        qn++;
-        if (qn < questions.length) {
-            init_question();
-        } else {
-            results();
+
+        function calc_score(score, max) {
+            if (max == 0) return "50.0";
+            return (100 * (max + score) / (2 * max)).toFixed(1);
         }
-    }
 
-    function prev_question() {
-        if (qn > 0) {
-            qn--;
-            init_question();
+        function results() {
+            const urlMap = {
+                econ: "e", dipl: "d", govt: "g", scty: "s", coll: "c", 
+                env: "v", dem: "m", fed: "f", rel: "t", ideal: "i", 
+                util: "x", sec: "y", bord: "b", mil: "p", nih: "n", 
+                space: "z", meme: "r", plan: "l", Clt: "q"
+            };
+
+            let queryParams = axes.map(axis => {
+                let total_score = user_scores[axis].reduce((a, b) => a + b, 0);
+                return `${urlMap[axis]}=${calc_score(total_score, max_scores[axis])}`;
+            });
+
+            location.href = "results.html?" + queryParams.join("&");
         }
-    }
-
-    function calc_score(score, max) {
-        if (max == 0) return "50.0";
-        return (100 * (max + score) / (2 * max)).toFixed(1);
-    }
-
-    function results() {
-        const urlMap = {
-            econ: "e", dipl: "d", govt: "g", scty: "s", coll: "c", 
-            env: "v", dem: "m", fed: "f", rel: "t", ideal: "i", 
-            util: "x", sec: "y", bord: "b", mil: "p", nih: "n", 
-            space: "z", meme: "r", plan: "l", Clt: "q"
-        };
-
-        let queryParams = axes.map(axis => {
-            let total_score = user_scores[axis].reduce((a, b) => a + b, 0);
-            return `${urlMap[axis]}=${calc_score(total_score, max_scores[axis])}`;
-        });
-
-        location.href = "results.html?" + queryParams.join("&");
-    }
-</script>
+    </script>
 </body>
-
-
